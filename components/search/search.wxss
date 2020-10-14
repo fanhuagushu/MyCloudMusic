@@ -14,7 +14,7 @@
   padding: 0 32rpx;
   width: 400rpx;
   box-sizing: border-box;
-  font-size: 32rpx;
+  font-size: 28rpx;
   color: #aaa;
   background-color: #fff;
 }
