@@ -1,0 +1,13 @@
+function handlePlayCount(playCount) {
+  playCount = playCount.toString();
+  if (playCount.length >= 5 && playCount.length <= 8) {
+    playCount = playCount.substring(0, playCount.length - 4) + '万';
+  } else if (playCount.length >= 9) {
+    playCount = playCount.substring(0, playCount.length - 8) + '亿';
+  };
+  return playCount
+}
+
+module.exports = {
+  handlePlayCount: handlePlayCount
+}

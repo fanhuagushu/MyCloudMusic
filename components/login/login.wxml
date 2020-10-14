@@ -1,0 +1,45 @@
+<view class="main {{show?'main_':''}}">
+  <!-- logo -->
+  <view class="logo-box">
+    <image src="/images/logo.png" class="logo"></image>
+  </view>
+
+  <!-- 登录选项 -->
+  <view class="login-actions">
+    <view class="action phone" bindtap="phoneLogin">手机号登录</view>
+    <view class="action mail" bindtap="mailLogin">邮箱登录</view>
+  </view>
+
+  <!-- 登录弹窗 -->
+  <view class="cover-login" style="display:{{loginCoverShow?'block':'none'}};">
+    <view class="head" style="height:{{menuTop+menuHeight+10}}px;">
+      <view class="title" style="top:{{menuTop}}px;height:{{menuHeight}}px;">
+        <view class="go-back" style="width:{{menuHeight}}px;height:{{menuHeight}}px;" bindtap="hideCoverLogin">
+          <image src="/images/goback.png"></image>
+        </view>
+        <view>{{loginType==='phone'?'手机号登录':'邮箱登录'}}</view>
+      </view>
+    </view>
+    <view class="cover-main">
+      <view class="tips" style="display:{{passwordInputShow?'none':'block'}};">未注册手机号登录后将自动创建账号</view>
+      <view class="input-box" style="display:{{passwordInputShow?'none':'flex'}};">
+        <view class="country-code">+86<image src="/images/more.png"></image>
+        </view>
+        <input class="ipt" type="number" placeholder="请输入手机号" value="{{phoneValue}}" bindinput="phoneInput" />
+      </view>
+      <view class="input-box" style="display:{{!passwordInputShow?'none':'flex'}};">
+        <input class="ipt" type="number" placeholder="请输入密码" value="{{passwordValue}}" bindinput="passwordInput" />
+      </view>
+      <view class="next" bindtap="{{passwordInputShow?'confirmLogin':'checkPhone'}}">{{passwordInputShow?'登录':'下一步'}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 国家电话编号弹窗 -->
+  <!-- <view class="cover-country-code">
+    <view class="title">
+      <image src="/images/close.png"></image>
+      <view>选择国家和地区</view>
+    </view>
+  </view> -->
+</view>

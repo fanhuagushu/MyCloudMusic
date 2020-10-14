@@ -1,0 +1,153 @@
+.main {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+  width: 100vw;
+  height: 100vh;
+  background-color: #dc2c1f;
+  opacity: 0;
+  transition: all 300ms;
+}
+
+.main_ {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.logo-box {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 185rpx;
+  height: 185rpx;
+  border-radius: 50%;
+  background-color: #f12a25;
+}
+
+.logo-box .logo {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.login-actions {
+  position: absolute;
+  bottom: calc(env(safe-area-inset-bottom) + 200rpx);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.login-actions .action {
+  width: 550rpx;
+  height: 90rpx;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 32rpx;
+  border-radius: 50rpx;
+}
+
+.login-actions .action.phone {
+  margin-bottom: 40rpx;
+  color: #dc2c1f;
+  background-color: #fff;
+}
+
+.login-actions .action.mail {
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.cover-login {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+}
+
+.cover-login .head {
+  background-color: #dc2c1f;
+}
+
+.cover-login .head .title {
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #fff;
+}
+
+.cover-login .head .title .go-back {
+  margin-right: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.cover-login .head .title .go-back:active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.cover-login .head .title .go-back image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.cover-login .cover-main {
+  padding: 0 32rpx;
+}
+
+.cover-login .cover-main .tips {
+  margin-top: 64rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.cover-login .cover-main .input-box {
+  margin-top: 64rpx;
+  padding: 13rpx 0;
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+
+.cover-login .cover-main .input-box .country-code {
+  margin-right: 16rpx;
+  font-size: 36rpx;
+}
+
+.cover-login .cover-main .input-box .country-code:active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.cover-login .cover-main .input-box .country-code image {
+  margin-left: 8rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.cover-login .cover-main .input-box .ipt {
+  flex: 1;
+  font-size: 32rpx;
+}
+
+.cover-login .cover-main .next {
+  margin: 100rpx 48rpx 0;
+  height: 88rpx;
+  text-align: center;
+  line-height: 88rpx;
+  font-size: 36rpx;
+  color: #fff;
+  background-color: #dc2c1f;
+  border-radius: 44rpx;
+}
+
+.cover-country-code {}

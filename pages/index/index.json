@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "login-view": "/components/login/login",
+    "head-search": "/components/search/search"
+  },
+  "navigationStyle": "custom"
+}

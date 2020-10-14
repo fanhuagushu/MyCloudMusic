@@ -1,0 +1,222 @@
+<wxs src="../../utils/handle.wxs" module="tool"></wxs>
+<view class="main">
+  <!-- 顶部背景色 -->
+  <view class="bgc"></view>
+
+  <!-- 搜索 -->
+  <!-- <view class="head" style="height:{{menuTop+menuHeight+12}}px;">
+    <view class="search"></view>
+  </view> -->
+  <head-search></head-search>
+
+  <!-- 轮播图 -->
+  <swiper class="swiper" indicator-dots indicator-color="rgba(0, 0, 0, .3)" indicator-active-color="#dc2c1f" autoplay
+    interval="3000" circular>
+    <block wx:for="{{swiperList}}" wx:key="index">
+      <swiper-item data-index="{{index}}" bindtap="swiperJump">
+        <image src="{{item.pic}}">
+          <view class="type-title">{{item.typeTitle}}</view>
+        </image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- Nav -->
+  <scroll-view class="nav-scroll" scroll-x>
+    <block wx:for="{{['每日推荐','私人FM','歌单','排行榜','直播','电台','数字专辑','唱聊','游戏专区']}}" wx:key="index">
+      <view class="nav">
+        <view class="icon">
+          <image src="/images/index_nav_{{index+1}}.png"></image>
+        </view>
+        <view class="txt">{{item}}</view>
+      </view>
+    </block>
+  </scroll-view>
+
+  <!-- 首页板块 -->
+  <view class="index-block">
+    <view class="title">
+      <view class="txt">{{indexInfo[0].uiElement.subTitle.title}}</view>
+      <view class="btn">{{indexInfo[0].uiElement.button.text}}</view>
+    </view>
+    <scroll-view scroll-x class="block-scroll">
+      <block wx:for="{{indexInfo[0].creatives}}" wx:key="index">
+        <view class="play-list-item">
+          <image src="{{item.uiElement.image.imageUrl}}" class="playlist-img">
+            <view class="play-num">
+              <image src="/images/playlist_play.png"></image>
+              <view>{{(tool.handlePlayCount(item.resources[0].resourceExtInfo.playCount))}}</view>
+            </view>
+          </image>
+          <view class="item-name">{{item.uiElement.mainTitle.title}}</view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+  <view class="index-block">
+    <view class="title">
+      <view class="txt">{{indexInfo[1].uiElement.subTitle.title}}</view>
+      <view class="btn">{{indexInfo[1].uiElement.button.text}}</view>
+    </view>
+    <swiper class="block-swiper">
+      <block wx:for="{{indexInfo[1].creatives}}" wx:for-item="i" wx:for-index="ii" wx:key="index">
+        <swiper-item class="block-swiper-item">
+          <view class="song-list">
+            <block wx:for="{{i.resources}}" wx:for-item="j" wx:for-index="ji" wx:key="index">
+              <view class="song-list-item">
+                <image src="{{j.uiElement.image.imageUrl}}" class="song-img"></image>
+                <view class="item-info">
+                  <view class="song-singer">
+                    <view class="song-name">{{j.uiElement.mainTitle.title}}</view>
+                    <view class="singer-name">　- {{j.resourceExtInfo.artists[0].name}}</view>
+                  </view>
+                  <view class="song-explain">{{j.uiElement.subTitle.title}}</view>
+                </view>
+                <view class="play-icon">
+                  <image src="/images/play.png"></image>
+                </view>
+              </view>
+            </block>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class="index-block">
+    <view class="title">
+      <view class="txt">{{indexInfo[2].uiElement.subTitle.title}}</view>
+      <view class="btn">{{indexInfo[2].uiElement.button.text}}</view>
+    </view>
+    <scroll-view scroll-x class="block-scroll">
+      <block wx:for="{{indexInfo[2].creatives}}" wx:key="index">
+        <view class="play-list-item">
+          <image src="{{item.uiElement.image.imageUrl}}" class="playlist-img">
+            <view class="play-num">
+              <image src="/images/playlist_play.png"></image>
+              <view>{{(tool.handlePlayCount(item.resources[0].resourceExtInfo.playCount))}}</view>
+            </view>
+          </image>
+          <view class="item-name">{{item.uiElement.mainTitle.title}}</view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+  <view class="index-block">
+    <view class="title">
+      <view class="txt">{{indexInfo[3].uiElement.subTitle.title}}</view>
+      <view class="btn">{{indexInfo[3].uiElement.button.text}}</view>
+    </view>
+    <scroll-view scroll-x class="block-scroll">
+      <block wx:for="{{indexInfo[3].extInfo.squareFeedViewDTOList}}" wx:for-item="i" wx:for-index="ii" wx:key="index">
+        <view class="mlog-item">
+          <image src="{{i.resource.mlogBaseData.coverUrl}}" class="mlog-img" mode="aspectFill"></image>
+          <view class="mlog-txt">{{i.resource.mlogBaseData.text}}</view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+  <view class="index-block">
+    <view class="title">
+      <view class="txt">{{indexInfo[4].uiElement.subTitle.title}}</view>
+      <view class="btn">{{indexInfo[4].uiElement.button.text}}</view>
+    </view>
+    <scroll-view scroll-x class="block-scroll">
+      <block wx:for="{{indexInfo[4].extInfo}}" wx:key="index">
+        <view class="play-list-item">
+          <image src="{{item.verticalCover}}" class="playlist-img">
+            <view class="hot-tag">
+              <image src="/images/hot.png" class="hot-img"></image>
+              <view>{{item.popularity + ' · ' + item.privateTag}}</view>
+            </view>
+          </image>
+          <view class="item-name">{{item.title}}</view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+  <view class="index-block">
+    <view class="title">
+      <view class="txt new-tabs">
+        <block wx:for="{{['新歌','新碟']}}" wx:key="index">
+          <view class="new-tab {{newTab===index?'':'active'}}" data-index="{{index}}" bindtap="changeNewTab">{{item}}
+          </view>
+        </block>
+      </view>
+      <view class="btn">更多新歌</view>
+    </view>
+    <swiper class="block-swiper" current="{{newSongCD}}">
+      <block wx:for="{{indexInfo[5].creatives}}" wx:for-item="i" wx:for-index="ii" wx:key="index"
+        wx:if="{{ (newTab===0&&ii<2) || (newTab===1&&ii>=2) }}">
+        <swiper-item class="block-swiper-item">
+          <view class="song-list">
+            <block wx:for="{{i.resources}}" wx:for-item="j" wx:for-index="ji" wx:key="index">
+              <view class="song-list-item">
+                <image src="{{j.uiElement.image.imageUrl}}" class="song-img"></image>
+                <view class="item-info">
+                  <view class="song-singer">
+                    <view class="song-name">{{j.uiElement.mainTitle.title}}</view>
+                    <view class="singer-name">　- {{j.resourceExtInfo.artists[0].name}}</view>
+                  </view>
+                  <view class="song-explain">{{j.uiElement.subTitle.title}}</view>
+                </view>
+                <view class="play-icon">
+                  <image src="/images/play.png"></image>
+                </view>
+              </view>
+            </block>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class="index-block">
+    <view class="title">
+      <view class="txt">{{indexInfo[6].uiElement.subTitle.title}}</view>
+      <view class="btn">{{indexInfo[6].uiElement.button.text}}</view>
+    </view>
+    <swiper class="block-swiper">
+      <block wx:for="{{indexInfo[6].creatives}}" wx:for-item="i" wx:for-index="ii" wx:key="index">
+        <swiper-item class="block-swiper-item">
+          <view class="song-list">
+            <block wx:for="{{i.resources}}" wx:for-item="j" wx:for-index="ji" wx:key="index">
+              <view class="song-list-item">
+                <image src="{{j.uiElement.image.imageUrl}}" class="song-img"></image>
+                <view class="item-info">
+                  <view class="song-singer">
+                    <view class="song-name">{{j.uiElement.mainTitle.title}}</view>
+                    <view class="singer-name">　- {{j.resourceExtInfo.artists[0].name}}</view>
+                  </view>
+                  <view class="song-explain">{{j.uiElement.subTitle.title}}</view>
+                </view>
+                <view class="play-icon">
+                  <image src="/images/play.png"></image>
+                </view>
+              </view>
+            </block>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class="index-block">
+    <view class="title">
+      <view class="txt">{{indexInfo[7].uiElement.subTitle.title}}</view>
+      <view class="btn">{{indexInfo[7].uiElement.button.text}}</view>
+    </view>
+    <scroll-view scroll-x class="block-scroll">
+      <block wx:for="{{indexInfo[7].creatives}}" wx:key="index">
+        <view class="play-list-item">
+          <image src="{{item.uiElement.image.imageUrl}}" class="playlist-img"></image>
+          <view class="item-name">{{item.uiElement.mainTitle.title}}</view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

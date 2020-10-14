@@ -1,0 +1,6 @@
+<view class="main">
+  <view class="start-pause" bindtap="{{musicPlay?'pauseMusic':'startMusic'}}">
+    <image src="/images/music_start.png" style="display:{{musicPlay?'none':'block'}};"></image>
+    <image src="/images/music_pause.png" style="display:{{musicPlay?'block':'none'}};"></image>
+  </view>
+</view>

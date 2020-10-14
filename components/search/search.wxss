@@ -1,0 +1,26 @@
+.head {
+  z-index: 999;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #dc2c1f;
+}
+
+.head .search {
+  position: absolute;
+  left: 32rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 32rpx;
+  width: 400rpx;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  color: #aaa;
+  background-color: #fff;
+}
+
+.head .search image {
+  margin-right: 16rpx;
+  width: 30rpx;
+  height: 30rpx;
+}

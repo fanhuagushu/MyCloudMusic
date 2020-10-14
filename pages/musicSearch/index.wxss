@@ -1,0 +1,85 @@
+.login{
+  margin: 64rpx 0;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+.logo image {
+  width: 400rpx;
+  height: 80rpx;
+}
+
+.head {
+  padding: 32rpx;
+}
+
+.head .search {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 32rpx;
+  width: 100%;
+  height: 60rpx;
+  border-radius: 50rpx;
+  background-color: #eee;
+}
+
+.head .search input {
+  width: 100%;
+  text-align: center;
+  font-size: 26rpx;
+  color: #131313;
+}
+
+.music-list {
+  padding: 0 24rpx;
+}
+
+.music-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.music-item .menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+
+.music-item .menu image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.music-item .music-info {
+  flex: 1;
+}
+
+.music-item .music-info .music-name {
+  margin-bottom: 4rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 600rpx;
+  font-size: 32rpx;
+  color: rgb(0, 113, 255);
+}
+
+.music-item .music-info .artists-album {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 600rpx;
+  font-size: 26rpx;
+  color: #777;
+}

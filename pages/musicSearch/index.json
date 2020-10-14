@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "login-view": "/components/login/login"
+  },
+  "navigationStyle": "custom"
+}

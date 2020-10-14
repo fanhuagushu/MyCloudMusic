@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/musicSearch/index",
+    "pages/musicDetails/index",
+    "components/login/login",
+    "components/search/search"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "网抑云音乐",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "",
+    "selectedColor": "",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "发现",
+      "iconPath": "",
+      "selectedIconPath": ""
+    }, {
+      "pagePath": "pages/index/index",
+      "text": "我的",
+      "iconPath": "",
+      "selectedIconPath": ""
+    }]
+  },
+  "sitemapLocation": "sitemap.json"
+}
