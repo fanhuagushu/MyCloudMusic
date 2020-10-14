@@ -71,5 +71,12 @@ Page({
       newTab: index,
       newSongCD: 0
     });
+  },
+
+  // 前往搜索
+  goSearch() {
+    wx.navigateTo({
+      url: '/pages/musicSearch/index',
+    });
   }
 })

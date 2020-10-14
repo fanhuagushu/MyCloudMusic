@@ -1,5 +1,5 @@
 <view class="head" style="height:{{menuTop+menuHeight+12}}px;">
-  <view class="search" style="top:{{menuTop}}px;height:{{menuHeight}}px;border-radius:{{menuHeight/2}}px;">
+  <view class="search" style="top:{{menuTop}}px;height:{{menuHeight}}px;border-radius:{{menuHeight/2}}px;" bindtap="goSearch">
     <image src="/images/search_icon.png"></image>
     <view>搜索</view>
   </view>

@@ -1,4 +1,7 @@
 <view class="main {{show?'main_':''}}">
+  <view class="return" style="top:{{menuTop}}px;width:{{menuHeight}}px;height:{{menuHeight}}px;" bindtap="goback">
+    <image src="/images/goback.png"></image>
+  </view>
   <!-- logo -->
   <view class="logo-box">
     <image src="/images/logo.png" class="logo"></image>

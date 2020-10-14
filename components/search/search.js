@@ -29,6 +29,8 @@ Component({
     resize(size) {}
   },
   methods: {
-
+    goSearch() {
+      this.triggerEvent('search');
+    }
   }
 })

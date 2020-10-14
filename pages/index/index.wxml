@@ -7,7 +7,7 @@
   <!-- <view class="head" style="height:{{menuTop+menuHeight+12}}px;">
     <view class="search"></view>
   </view> -->
-  <head-search></head-search>
+  <head-search bind:search="goSearch"></head-search>
 
   <!-- 轮播图 -->
   <swiper class="swiper" indicator-dots indicator-color="rgba(0, 0, 0, .3)" indicator-active-color="#dc2c1f" autoplay

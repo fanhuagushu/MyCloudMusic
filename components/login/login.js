@@ -149,6 +149,12 @@ Component({
       this.setData({
         loginCoverShow: false
       });
+    },
+    // 返回
+    goback() {
+      this.setData({
+        show: false
+      });
     }
   }
 })

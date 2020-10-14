@@ -16,6 +16,24 @@
   opacity: 1;
 }
 
+.return {
+  position: absolute;
+  left: 32rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.return:active {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.return image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
 .logo-box {
   position: absolute;
   top: 20%;
