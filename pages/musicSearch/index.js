@@ -2,12 +2,17 @@ const app = getApp()
 
 Page({
   data: {
-    musicList: [],
-    goLogin: false
+    menuTop: 0,
+    menuHeight: 0,
+    musicList: []
   },
 
   onLoad() {
-    // this.getMusic('修炼爱情');
+    let menu = wx.getMenuButtonBoundingClientRect();
+    this.setData({
+      menuTop: menu.top,
+      menuHeight: menu.height
+    });
   },
 
   // 搜索请求
@@ -39,12 +44,6 @@ Page({
     } = e.currentTarget.dataset;
     wx.navigateTo({
       url: `/pages/musicDetails/index?id=${id}`,
-    });
-  },
-
-  showLogin() {
-    this.setData({
-      goLogin: true
     });
   }
 })
