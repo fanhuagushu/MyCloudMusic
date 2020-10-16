@@ -1,3 +1,76 @@
 .head {
+  position: sticky;
+  top: 0;
+  left: 0;
   background-color: #dc2c1f;
+}
+
+.head .search {
+  position: absolute;
+  display: flex;
+}
+
+.head .search .back {
+  margin: 0 24rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.head .search .back:active {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.head .search .back image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.head .search .ipt {
+  width: calc(100vw - 112rpx - 100px);
+  height: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+.history-search {
+  display: flex;
+  align-items: center;
+}
+
+.history-search .title {
+  width: 128rpx;
+  height: 128rpx;
+  line-height: 128rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.history-search .delete {
+  padding: 24rpx;
+}
+
+.history-search .delete:active {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.history-search .delete image {
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.history-search .history-scroll {
+  white-space: nowrap;
+  width: calc(100vw - 216rpx);
+}
+
+.history-search .history-scroll .history-item {
+  margin-right: 20rpx;
+  display: inline-block;
+  padding: 8rpx 24rpx;
+  font-size: 28rpx;
+  border-radius: 50rpx;
+  background-color: #eee;
 }
