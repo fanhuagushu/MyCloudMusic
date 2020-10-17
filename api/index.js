@@ -41,10 +41,10 @@ const getExclusiveBroadcast = () => request({
 })
 
 module.exports = {
-  getBanner: getBanner,
-  getNav: getNav,
-  getRecommendMusicList: getRecommendMusicList,
-  getRecommendNewMusic: getRecommendNewMusic,
-  getRecommendRadio: getRecommendRadio,
-  getExclusiveBroadcast: getExclusiveBroadcast
+  getBanner,
+  getNav,
+  getRecommendMusicList,
+  getRecommendNewMusic,
+  getRecommendRadio,
+  getExclusiveBroadcast
 }

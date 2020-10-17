@@ -1,4 +1,11 @@
 const app = getApp()
+import {
+  defaultSearch,
+  defaultSearchKeyword,
+  hotSearchList,
+  hotSearchDetailList,
+  searchSuggest
+} from '../../api/search'
 
 Page({
   data: {
@@ -15,8 +22,12 @@ Page({
     });
   },
 
+  getHotSearch() {
+
+  },
+
   // 搜索请求
-  getMusic(keywords) {
+  SearchApi(keywords) {
     wx.request({
       url: `http://localhost:3000/search?keywords=${keywords}`,
       success: res => {
@@ -34,7 +45,7 @@ Page({
     let {
       value
     } = e.detail;
-    this.getMusic(value);
+    this.SearchApi(value);
   },
 
   // 歌曲详情
