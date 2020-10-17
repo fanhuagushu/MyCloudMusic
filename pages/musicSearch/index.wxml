@@ -1,26 +1,33 @@
 <!-- 头部搜索 -->
 <view class="head" style="height:{{menuTop+menuHeight+12}}px;">
   <view class="search" style="top:{{menuTop}}px;height:{{menuHeight}}px;">
-    <view class="back" style="width:{{menuHeight}}px;height:{{menuHeight}}px;">
+    <view class="back" style="width:{{menuHeight}}px;height:{{menuHeight}}px;" bindtap="goBack">
       <image src="/images/goback.png"></image>
     </view>
-    <input class="ipt" type="text" bindconfirm="handleSearch" />
+    <input class="ipt" type="text" placeholder="{{defaultSearchKeywordValue}}"
+      placeholder-style="color:rgba(255,255,255,0.4);" bindconfirm="handleSearch" />
   </view>
+  <!-- 搜索推荐 -->
+  <!-- <cover-view class="search-suggest">
+    <cover-view class="search-what">搜索 “林俊杰”</cover-view>
+    <cover-view class="suggest-list">
+      <cover-view class="suggest-item">
+        <cover-image src="/images/search_icon.png" class="icon"></cover-image>
+        <cover-view>林俊杰</cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view> -->
 </view>
 
 <!-- 历史搜索 -->
 <view class="history-search">
   <view class="title">历史</view>
   <scroll-view class="history-scroll" scroll-x>
-    <view class="history-item">林俊杰</view>
-    <view class="history-item">林俊杰</view>
-    <view class="history-item">林俊杰</view>
-    <view class="history-item">林俊杰</view>
-    <view class="history-item">林俊杰</view>
-    <view class="history-item">林俊杰</view>
-    <view class="history-item">林俊杰</view>
+    <block wx:for="{{historySearchList}}" wx:key="index">
+      <view class="history-item">{{item}}</view>
+    </block>
   </scroll-view>
-  <view class="delete">
+  <view class="delete" bindtap="deleteHistorySearch">
     <image src="/images/history_delete.png"></image>
   </view>
 </view>
@@ -43,5 +50,8 @@
       </view>
     </block>
   </view>
-  <view class="more {{moreSearchOpen?'hide':''}}" bindtap="openMoreHotSearch">展开更多热搜</view>
+  <view class="more {{moreSearchOpen?'hide':''}}" bindtap="openMoreHotSearch">
+    <view>展开更多热搜</view>
+    <image src="/images/hot_more.png"></image>
+  </view>
 </view>

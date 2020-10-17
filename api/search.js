@@ -32,8 +32,8 @@ const hotSearchDetailList = () => request({
   url: '/search/hot/detail'
 })
 
-const searchSuggest = () => request({
-  url: '/search/suggest'
+const searchSuggest = (keywords) => request({
+  url: `/search/suggest?keywords=${keywords}`
 })
 
 module.exports = {
