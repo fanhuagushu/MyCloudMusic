@@ -30,6 +30,7 @@
 .head .search .ipt {
   width: calc(100vw - 112rpx - 100px);
   height: 100%;
+  color: #fff;
   border-bottom: 1px solid #ccc;
 }
 
@@ -73,4 +74,37 @@
   font-size: 28rpx;
   border-radius: 50rpx;
   background-color: #eee;
+}
+
+.hot-search {
+  padding: 0 32rpx;
+}
+
+.hot-search .title {
+  padding: 24rpx 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.hot-search .title .txt {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.hot-search .title .play-all {
+  padding: 8rpx 20rpx;
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #333;
+  border-radius: 50rpx;
+  border: 1px solid #ddd;
+}
+
+.hot-search .title .play-all image {
+  margin-right: 8rpx;
+  width: 20rpx;
+  height: 20rpx;
 }

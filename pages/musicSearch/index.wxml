@@ -24,3 +24,15 @@
     <image src="/images/history_delete.png"></image>
   </view>
 </view>
+
+<!-- 热搜榜 -->
+<view class="hot-search">
+  <view class="title">
+    <view class="txt">热搜榜</view>
+    <view class="play-all">
+      <image src="/images/play_all.png"></image>
+      <view>播放全部</view>
+    </view>
+  </view>
+  <view class="hot-list"></view>
+</view>
