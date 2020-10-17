@@ -77,11 +77,11 @@
 }
 
 .hot-search {
-  padding: 0 32rpx;
+  position: relative;
 }
 
 .hot-search .title {
-  padding: 24rpx 0;
+  padding: 24rpx 32rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -110,15 +110,28 @@
 }
 
 .hot-search .hot-list {
+  padding: 0 32rpx;
   display: flex;
   flex-wrap: wrap;
+  height: calc(5 * 74rpx);
+  overflow: hidden;
+  transition: all 500ms;
+}
+
+.hot-search .hot-list.open {
+  height: calc(10 * 74rpx);
 }
 
 .hot-search .hot-list .hot-item {
-  padding: 16rpx 0;
   display: flex;
   align-items: center;
   width: 50%;
+  height: 74rpx;
+  transition: all 300ms linear 300ms;
+}
+
+.hot-search .hot-list .hot-item.hide {
+  opacity: 0;
 }
 
 .hot-search .hot-list .hot-item .hot-No {
@@ -130,4 +143,30 @@
 .hot-search .hot-list .hot-item .hot-value {
   font-size: 30rpx;
   font-weight: bold;
+}
+
+.hot-search .hot-list .hot-item .icon {
+  margin-left: 20rpx;
+  width: 50rpx;
+  height: 30rpx;
+}
+
+.hot-search .more {
+  position: absolute;
+  top: calc(5 * 74rpx + 104rpx);
+  left: 0;
+  right: 0;
+  padding: 20rpx 0;
+  text-align: center;
+  font-size: 30rpx;
+  color: #999;
+  transition: all 300ms;
+}
+
+.hot-search .more:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.hot-search .more.hide {
+  opacity: 0;
 }

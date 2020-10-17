@@ -11,7 +11,9 @@ Page({
   data: {
     menuTop: 0,
     menuHeight: 0,
-    musicList: []
+    musicList: [],
+    hotSearchKeywordsList: [],
+    moreSearchOpen: false
   },
 
   onLoad() {
@@ -20,10 +22,32 @@ Page({
       menuTop: menu.top,
       menuHeight: menu.height
     });
+
+    this.getHotSearchDetail();
   },
 
-  getHotSearch() {
+  // 获取热搜榜
+  // getHotSearch() {
+  //   hotSearchList().then(res => {
+  //     console.log(res);
+  //   });
+  // },
 
+  // 获取热搜榜
+  getHotSearchDetail() {
+    hotSearchDetailList().then(res => {
+      if (res.data.code === 200) {
+        this.setData({
+          hotSearchKeywordsList: res.data.data
+        });
+      };
+    });
+  },
+  // 展开更多热搜
+  openMoreHotSearch() {
+    this.setData({
+      moreSearchOpen: true
+    });
   },
 
   // 搜索请求

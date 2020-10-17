@@ -34,22 +34,14 @@
       <view>播放全部</view>
     </view>
   </view>
-  <view class="hot-list">
-    <view class="hot-item">
-      <view class="hot-No">1</view>
-      <view class="hot-value">林俊杰</view>
-    </view>
-    <view class="hot-item">
-      <view class="hot-No">2</view>
-      <view class="hot-value">林俊杰</view>
-    </view>
-    <view class="hot-item">
-      <view class="hot-No">3</view>
-      <view class="hot-value">林俊杰</view>
-    </view>
-    <view class="hot-item">
-      <view class="hot-No">4</view>
-      <view class="hot-value">林俊杰</view>
-    </view>
+  <view class="hot-list {{moreSearchOpen?'open':''}}">
+    <block wx:for="{{hotSearchKeywordsList}}" wx:key="index">
+      <view class="hot-item {{index > 9 && !moreSearchOpen ? 'hide' : ''}}">
+        <view class="hot-No">{{index+1}}</view>
+        <view class="hot-value">{{item.searchWord}}</view>
+        <image src="{{item.iconUrl}}" class="icon" wx:if="{{item.iconUrl}}" mode="aspectFit"></image>
+      </view>
+    </block>
   </view>
+  <view class="more {{moreSearchOpen?'hide':''}}" bindtap="openMoreHotSearch">展开更多热搜</view>
 </view>

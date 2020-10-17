@@ -1,3 +1,7 @@
+import {
+  request
+} from '../utils/request';
+
 /**
  * 搜索
  * type : 搜索类型,对应以下类型,默认为 1 即单曲
