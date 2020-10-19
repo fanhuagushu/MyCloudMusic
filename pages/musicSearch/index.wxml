@@ -1,3 +1,4 @@
+<wxs src="../../utils/handle.wxs" module="tool"></wxs>
 <!-- 头部搜索 -->
 <view class="head" style="height:{{menuTop+menuHeight+12}}px;">
   <view class="search" style="top:{{menuTop}}px;height:{{menuHeight}}px;">
@@ -20,7 +21,8 @@
 </view>
 
 <!-- 历史搜索 -->
-<view class="history-search" style="display:{{!isSearch&&historySearchList.length!==0?'flex':'none'}};">
+<view class="history-search" wx:if="{{false}}"
+  style="display:{{!isSearch&&historySearchList.length!==0?'flex':'none'}};">
   <view class="title">历史</view>
   <scroll-view class="history-scroll" scroll-x>
     <block wx:for="{{historySearchList}}" wx:key="index">
@@ -33,7 +35,7 @@
 </view>
 
 <!-- 热搜榜 -->
-<view class="hot-search" style="display:{{!isSearch?'block':'none'}};">
+<view class="hot-search" wx:if="{{false}}" style="display:{{!isSearch?'block':'none'}};">
   <view class="title">
     <view class="txt">热搜榜</view>
     <view class="play-all">
@@ -55,4 +57,72 @@
     <view>展开更多热搜</view>
     <image src="/images/hot_more.png"></image>
   </view>
+</view>
+
+<!-- 搜索类型 -->
+<view class="search-nav" style="display:{{isSearch?'block':'none'}};top:{{menuTop+menuHeight+12}}px;">
+  <scroll-view scroll-x class="search-nav-scroll">
+    <block wx:for="{{searchNavList}}" wx:key="index">
+      <view class="searchNav-item {{searchListCurrent===index?'active':''}}" data-index="{{index}}"
+        bindtap="changeSearchNav">
+        {{item.name}}</view>
+    </block>
+  </scroll-view>
+</view>
+
+<!-- 搜索列表 -->
+<view class="search-list"
+  style="height:calc(100vh - {{menuTop+menuHeight+12}}px - 80rpx - env(safe-area-inset-bottom));">
+  <swiper current="{{searchListCurrent}}" duration="300" class="swiper" bindchange="swiperChange">
+    <swiper-item>
+      <scroll-view scroll-y class="search-list-scroll">
+        <view class="song-list-block">
+          <view class="list-title">单曲</view>
+          <view class="song-list">
+            <block wx:for="{{comprehensiveList.song.songs}}" wx:key="index">
+              <view class="song-item">
+                <view class="song-info">
+                  <view class="song-name">{{item.name}}</view>
+                  <view class="singer-album">
+                    <block wx:for="{{item.ar}}" wx:key="index"><text>{{item.name}}</text></block> - {{item.al.name}}
+                  </view>
+                </view>
+                <view class="actions">
+                  <view class="action">
+                    <image src="/images/play_mv.png"></image>
+                  </view>
+                  <view class="action">
+                    <image src="/images/music_menu.png"></image>
+                  </view>
+                </view>
+              </view>
+            </block>
+          </view>
+          <view class="havemore" wx:if="{{comprehensiveList.song.more}}">{{comprehensiveList.song.moreText}}</view>
+        </view>
+        <view class="play-list-block">
+          <view class="list-title">歌单</view>
+          <view class="play-list">
+            <block wx:for="{{comprehensiveList.playList.playLists}}" wx:key="index">
+              <view class="play-item">
+                <image src="{{item.coverImgUrl}}" class="playImg"></image>
+                <view class="play-info">
+                  <view class="play-name">{{item.name}}</view>
+                  <view class="play-data">{{item.trackCount}}首　by
+                    {{item.creator.nickname}}，播放{{(tool.handlePlayCount(item.playCount))}}次</view>
+                </view>
+              </view>
+            </block>
+          </view>
+          <view class="havemore" wx:if="{{comprehensiveList.song.more}}">{{comprehensiveList.playList.moreText}}</view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>2</swiper-item>
+    <swiper-item>3</swiper-item>
+    <swiper-item>4</swiper-item>
+    <swiper-item>5</swiper-item>
+    <swiper-item>6</swiper-item>
+    <swiper-item>7</swiper-item>
+  </swiper>
 </view>

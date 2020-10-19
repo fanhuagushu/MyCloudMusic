@@ -3,7 +3,11 @@ import {
   defaultSearch,
   defaultSearchKeyword,
   hotSearchDetailList
-} from '../../api/search'
+} from '../../api/search';
+
+import {
+  nav
+} from '../../utils/searchNav'
 
 Page({
   data: {
@@ -14,8 +18,15 @@ Page({
     historySearchList: [],
     hotSearchKeywordsList: [],
     moreSearchOpen: false,
-    musicList: [],
-    isSearch: false
+    searchNavList: nav,
+    currentSearchtype: 1018,
+    searchListCurrent: 0,
+    comprehensiveList: {}, // 综合
+    songList: [], // 单曲
+    videoList: [], // 视频
+    singerList: [], // 歌手
+    playList: [], // 歌单
+    isSearch: true
   },
 
   onLoad() {
@@ -36,6 +47,7 @@ Page({
 
     this.getDefaultKeyWord();
     this.getHotSearchDetail();
+    this.SearchApi('林俊杰', 1018, 0);
   },
 
   getDefaultKeyWord() {
@@ -66,11 +78,14 @@ Page({
   },
 
   // 搜索请求
-  SearchApi(keywords) {
-    defaultSearch(keywords, 1, 0, 20).then(res => {
-      console.log(res);
+  SearchApi(keywords, type, pageNum) {
+    defaultSearch(keywords, type, pageNum, 20).then(res => {
       if (res.data.code === 200) {
-
+        if (type === 1018) {
+          this.setData({
+            comprehensiveList: res.data.result
+          });
+        }
       };
     });
   },
@@ -93,7 +108,7 @@ Page({
         data: this.data.historySearchList,
         key: 'historySearch'
       });
-      this.SearchApi(this.data.defaultSearchKeywordValue);
+      this.SearchApi(this.data.defaultSearchKeywordValue, this.data.currentSearchtype, 0);
     } else {
       if (this.data.historySearchList.indexOf(value) !== -1) {
         this.data.historySearchList.splice(this.data.historySearchList.indexOf(value), 1);
@@ -108,7 +123,7 @@ Page({
         data: this.data.historySearchList,
         key: 'historySearch'
       });
-      this.SearchApi(value);
+      this.SearchApi(value, this.data.currentSearchtype, 0);
     };
   },
   // 点击搜索
@@ -120,7 +135,28 @@ Page({
       searchValue: value,
       isSearch: true
     });
-    this.SearchApi(value);
+    // this.SearchApi(value);
+  },
+
+  // 切换搜索类型
+  changeSearchNav(e) {
+    let {
+      index
+    } = e.currentTarget.dataset;
+    this.setData({
+      currentSearchtype: this.data.searchNavList[index].type,
+      searchListCurrent: index
+    });
+  },
+  // swiper改变
+  swiperChange(e) {
+    let {
+      current
+    } = e.detail;
+    this.setData({
+      currentSearchtype: this.data.searchNavList[current].type,
+      searchListCurrent: current
+    });
   },
 
   // 删除历史搜索

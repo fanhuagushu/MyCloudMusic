@@ -82,7 +82,7 @@ const request = (config = {}) => {
             mask: true,
             duration: 2000
           });
-        } else if (res.data.code === 502 || res.data.code === 301) {
+        } else if (res.data.code === 502 || res.data.code === 301 || res.data.code === 400) {
           wx.showToast({
             title: res.data.msg,
             icon: 'none',
