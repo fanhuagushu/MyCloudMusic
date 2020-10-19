@@ -5,7 +5,7 @@
       <image src="/images/goback.png"></image>
     </view>
     <input class="ipt" type="text" placeholder="{{defaultSearchKeywordValue}}"
-      placeholder-style="color:rgba(255,255,255,0.4);" bindconfirm="handleSearch" />
+      placeholder-style="color:rgba(255,255,255,0.4);" value="{{searchValue}}" bindconfirm="handleSearch" />
   </view>
   <!-- 搜索推荐 -->
   <!-- <cover-view class="search-suggest">
@@ -20,11 +20,11 @@
 </view>
 
 <!-- 历史搜索 -->
-<view class="history-search">
+<view class="history-search" style="display:{{!isSearch&&historySearchList.length!==0?'flex':'none'}};">
   <view class="title">历史</view>
   <scroll-view class="history-scroll" scroll-x>
     <block wx:for="{{historySearchList}}" wx:key="index">
-      <view class="history-item">{{item}}</view>
+      <view class="history-item" data-value="{{item}}" bindtap="clickSearch">{{item}}</view>
     </block>
   </scroll-view>
   <view class="delete" bindtap="deleteHistorySearch">
@@ -33,7 +33,7 @@
 </view>
 
 <!-- 热搜榜 -->
-<view class="hot-search">
+<view class="hot-search" style="display:{{!isSearch?'block':'none'}};">
   <view class="title">
     <view class="txt">热搜榜</view>
     <view class="play-all">
@@ -43,7 +43,8 @@
   </view>
   <view class="hot-list {{moreSearchOpen?'open':''}}">
     <block wx:for="{{hotSearchKeywordsList}}" wx:key="index">
-      <view class="hot-item {{index > 9 && !moreSearchOpen ? 'hide' : ''}}">
+      <view class="hot-item {{index > 9 && !moreSearchOpen ? 'hide' : ''}}" data-value="{{item.searchWord}}"
+        bindtap="clickSearch">
         <view class="hot-No">{{index+1}}</view>
         <view class="hot-value">{{item.searchWord}}</view>
         <image src="{{item.iconUrl}}" class="icon" wx:if="{{item.iconUrl}}" mode="aspectFit"></image>

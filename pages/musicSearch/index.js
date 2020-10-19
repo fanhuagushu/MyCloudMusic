@@ -10,10 +10,12 @@ Page({
     menuTop: 0,
     menuHeight: 0,
     defaultSearchKeywordValue: '',
+    searchValue: '',
     historySearchList: [],
-    musicList: [],
     hotSearchKeywordsList: [],
-    moreSearchOpen: false
+    moreSearchOpen: false,
+    musicList: [],
+    isSearch: false
   },
 
   onLoad() {
@@ -65,15 +67,11 @@ Page({
 
   // 搜索请求
   SearchApi(keywords) {
-    wx.request({
-      url: `http://localhost:3000/search?keywords=${keywords}`,
-      success: res => {
-        if (res.data.code === 200) {
-          this.setData({
-            musicList: res.data.result.songs
-          });
-        };
-      }
+    defaultSearch(keywords, 1, 0, 20).then(res => {
+      console.log(res);
+      if (res.data.code === 200) {
+
+      };
     });
   },
   // 搜索
@@ -81,32 +79,48 @@ Page({
     let {
       value
     } = e.detail;
-    // this.SearchApi(value);
     if (value === '') {
       if (this.data.historySearchList.indexOf(this.data.defaultSearchKeywordValue) !== -1) {
         this.data.historySearchList.splice(this.data.historySearchList.indexOf(this.data.defaultSearchKeywordValue), 1);
       };
       this.data.historySearchList.unshift(this.data.defaultSearchKeywordValue);
       this.setData({
-        historySearchList: this.data.historySearchList
+        historySearchList: this.data.historySearchList,
+        searchValue: this.data.defaultSearchKeywordValue,
+        isSearch: true
       });
       wx.setStorage({
         data: this.data.historySearchList,
         key: 'historySearch'
       });
+      this.SearchApi(this.data.defaultSearchKeywordValue);
     } else {
       if (this.data.historySearchList.indexOf(value) !== -1) {
         this.data.historySearchList.splice(this.data.historySearchList.indexOf(value), 1);
       };
       this.data.historySearchList.unshift(value);
       this.setData({
-        historySearchList: this.data.historySearchList
+        historySearchList: this.data.historySearchList,
+        searchValue: value,
+        isSearch: true
       });
       wx.setStorage({
         data: this.data.historySearchList,
         key: 'historySearch'
       });
+      this.SearchApi(value);
     };
+  },
+  // 点击搜索
+  clickSearch(e) {
+    let {
+      value
+    } = e.currentTarget.dataset;
+    this.setData({
+      searchValue: value,
+      isSearch: true
+    });
+    this.SearchApi(value);
   },
 
   // 删除历史搜索
@@ -137,8 +151,14 @@ Page({
   },
 
   goBack() {
-    wx.navigateBack({
-      delta: 1
-    });
+    if (this.data.isSearch) {
+      this.setData({
+        isSearch: false
+      });
+    } else {
+      wx.navigateBack({
+        delta: 1
+      });
+    };
   }
 })

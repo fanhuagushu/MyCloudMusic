@@ -193,6 +193,7 @@
 }
 
 .hot-search .more {
+  z-index: -1;
   position: absolute;
   top: calc(5 * 74rpx + 104rpx);
   left: 0;

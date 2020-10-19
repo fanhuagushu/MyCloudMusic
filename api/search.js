@@ -16,8 +16,8 @@ import {
  * 1014 ：视频
  * 1018 ：综合
  */
-const defaultSearch = (keywords, type) => request({
-  url: `/search?keywords=${keywords}&type=${type}`
+const defaultSearch = (keywords, type, pageNum, pageSize) => request({
+  url: `/search?keywords=${keywords}&type=${type}&limit=${pageSize}&offset=${pageNum}`
 })
 
 const defaultSearchKeyword = () => request({
