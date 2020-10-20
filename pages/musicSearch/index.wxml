@@ -116,6 +116,23 @@
           </view>
           <view class="havemore" wx:if="{{comprehensiveList.song.more}}">{{comprehensiveList.playList.moreText}}</view>
         </view>
+        <view class="video-list-block">
+          <view class="list-title">视频</view>
+          <view class="video-list">
+            <block wx:for="{{comprehensiveList.video.videos}}" wx:key="index">
+              <view class="video-item">
+                <image src="{{item.coverUrl}}" class="video-img" mode="aspectFit">
+                  <view class="play-num">{{(tool.handlePlayCount(item.playTime))}}</view>
+                </image>
+                <view class="video-info">
+                  <view class="video-name">{{item.title}}</view>
+                  <view class="video-data">{{(tool.handleDurationms(item.durationms))}}　by {{item.creator[0].userName}}
+                  </view>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
       </scroll-view>
     </swiper-item>
     <swiper-item>2</swiper-item>
